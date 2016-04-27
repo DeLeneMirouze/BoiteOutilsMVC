@@ -1,0 +1,16 @@
+﻿
+
+Les vues ont été générées ici par un assistant Visual Studio.
+VS génère ces vues à partir de templates T4 qu'il est possible de personnaliser pour un projet particulier.
+
+Ces templates se trouvent ici:
+[Emplacement de Visual Studio]\Common7\IDE\ItemTemplates\CSharp\Web\MVC 4\CodeTemplates
+
+On y trouve les répertoires AddController et AddView. C'est ce dernier qui nous intéresse.
+Si on souhaite personnaliser les templates au niveau de la solution il suffit de recopier le répertoire CodeTemplates dans le projet.
+On supprime ensuite les templates dont on n'a pas besoin.
+
+Pour en savoir plus voici un tuto sur cette question:
+http://www.hanselman.com/blog/ModifyingTheDefaultCodeGenerationscaffoldingTemplatesInASPNETMVC.aspx
+
+Il est possible d'avoir plusieurs variante de chaque template (Edit par exemple). Ils seront affichés parmi les possibilité de l'assistant de création de vue.

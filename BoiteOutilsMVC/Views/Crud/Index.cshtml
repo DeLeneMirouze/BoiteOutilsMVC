@@ -1,0 +1,90 @@
+﻿@*
+=> lisez  auparavant les commentaires trouvés sur DemoTypedView.cshtml
+*@
+
+
+@model IEnumerable<BoiteOutilsMVC.Domaine.Personne>
+
+@{
+    ViewBag.Title = "Liste";
+}
+
+<h2>Liste</h2>
+
+<p>
+    @Html.ActionLink("Nouveau", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Prenom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateNaissance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SuperHeros)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Blog)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telephone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PointDeVie)
+        </th>
+        <th></th>
+    </tr>
+
+
+    @* =>
+    Le Model est une collection, on parcourt donc les items de la collection
+    @foreach est simplement un Repeater Asp.Net!
+*@
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Prenom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateNaissance)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SuperHeros)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Blog)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telephone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PointDeVie)
+        </td>
+        <td>
+            @* =>
+            L'assistant qui a composé cette vue reconnaît automatiquement Id comme l'id de l'enregistrement
+            si le nom était différent on devrait écrire soit même le 3ème argument de la méthode
+            *@
+            @Html.ActionLink("Editer", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Détails", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Supprimer", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

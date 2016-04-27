@@ -1,0 +1,6 @@
+﻿Le répertoire App_Start, malgré sa syntaxe, n'a en fait rien de magique contrairement à App_Theme, App_Code...
+On pourrait le nommer autrement.
+
+Toutefois il a une histoire:
+
+http://blog.davidebbo.com/2011/02/appstart-folder-convention-for-nuget.html

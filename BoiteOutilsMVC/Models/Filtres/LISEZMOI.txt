@@ -1,0 +1,43 @@
+﻿Les filtres
+----------------------
+
+Il s'agit de code que l'on peut ajouter pour modifier la façon dont une action est exécutée.
+De part leur utilisation et leur fonctionnement, on peut rappocher les filtres des extensions SOAP.
+Le filtre n'a pas forcément d'impacts visuels sur le résultat.
+
+Par exemple Asp.Net MVC fournit des filtres pour:
+
+Gérer un cache: OutputCache
+Intercepter les exceptions: HandleError
+Gérer les authorizations: Authorize
+
+On peut créer soi-même ses filtres, par exemple:
+
+Loguer
+Mesurer le temps d'exécution d'une action...
+
+Un filtre peut être ajouté à son application de 3 façons:
+
+* au niveau d'une action: => sous la forme d'un attribut
+* au niveau du contrôleur pour s'appliquer à toutes les actions du contrôleur: => sous la forme d'un attribut
+* au niveau de la configuration pour être appliqué à toutes les actions de tous les contrôleurs: => voir App_Start/FilterConfig
+
+Il est également important de savoir que les Web Api gèrent les filtres de façon asynchrone contrairement à MVC.
+--------------------------------------------------------------------------------------------
+
+Du point de vue du développeur, il existe 4 types de filtres qui implémentent chacun une interface différente:
+
+1) Filtre d'autorization: IAuthorizationFilter
+2) Filtre d'action: IActionFilter
+3) Filtre de résultat: IResultFilter
+4) Filtre d'exception: IExceptionFilter
+
+Les filtres sont évalués dans l'ordre précédent.
+De plus on dispose de la classe FilterAttribute qui permet à un filtre d'agir comme un attribut.
+
+Il existe aussi une classe utilitaire ActionResult qui implémente déjà IActionFilter et IResultFilter parfaitement appropriées pour les classes d'action.
+On dispose alors directement de 4 méthodes surchargeables.
+
+---------------------------------------------------------------------------------------------------
+
+Voir PerformanceTestFilterAttribute comme exemple de code.

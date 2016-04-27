@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "DemoViewData";
+}
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width" />
+
+</head>
+<body>
+    <h1>Démo ViewData</h1>
+   <ul>
+
+    @* => exploitation du ViewData 
+       Observez le passage entre la syntaxe Razor et la syntaxe Html via le préfixe @ ou <
+       C'est très caractéristique d'une vue Razor
+    *@
+
+    @foreach (var couleur in (List<string>)ViewData["Couleurs"])
+    {    
+        <li>@couleur    </li>
+    }
+    
+</ul>
+</body>
+</html>
+
+
+
+
+

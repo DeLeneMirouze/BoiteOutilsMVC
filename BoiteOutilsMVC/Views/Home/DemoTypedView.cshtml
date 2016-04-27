@@ -1,0 +1,59 @@
+﻿@* 
+=> Cette déclaration porte une minuscule, ne pas confondre avec @Model qui est une propriété de la vue
+On indique que le modèle de la vue est du type: BoiteOutilsMVC.Domaine.Animal
+
+La déclaration nous permettra de traiter @Model directement comme s'il s'agissait d'une instance de la classe Animal
+*@
+
+@using BoiteOutilsMVC.Domaine
+@model Animal
+
+@{
+    ViewBag.Title = "TypedView";
+}
+
+<h2>Vue fortement typée</h2>
+
+@* =>  Nous allons de préférence utiliser les Html helper accessibles via @Html
+Cela n'a rien d'obligatoire, mais le code s'en trouve simplifié, il y a moins d'Html à écrire.
+On utilisera plus particulièrement les méthodes en For qui sont appelées Helper fortement typées. Elles attendent une méthode
+lambda entre autres paramètres.
+Il s'agit de nouveautés apparues dans MVC 2
+*@
+
+<table>
+    <tr>
+        @* => DisplayNameFor retourne le nom de la propriété du modèle
+        On pourrait aussi mettre directement le texte: Nom
+         *@
+        <th>@Html.DisplayNameFor(modele=>modele.Nom)</th>
+        <th>@Html.DisplayNameFor(modele=>modele.Famille)</th>
+        <th>Autre possibilité</th>
+    </tr>
+
+    <tr>
+        @* => DisplayFor retourne un balisage Html pour la propriété fournie en fonction de ses éventuelles annotations (DataTypeAttribute)
+        mais aussi du type de la donnée
+        Par exemple un booléen est rendu par une case à cocher, une annotation EmailAdress rend un mailto...
+        *@
+        <td>@Html.DisplayFor(modele=>modele.Nom)</td>
+
+        <td>@Html.DisplayFor(modele=>modele.Famille)</td>
+
+
+        @*
+        => Voici une autre possibilité
+        La différence est que cette fois il n'y a pas l'encodage Html ce qui peut poser un potentiel problème de sécurité
+        *@
+        <td>@Model.Famille</td>
+    </tr>
+</table>
+
+<h2>On pourrait aussi écrire ceci</h2>
+
+@Html.DisplayFor(modele=>modele)
+
+@* 
+=> On obtient le même résultat que précédemment, mais il faudrait ensuite ajouter le CSS qui gèrerai l'affichage que nous avons
+pris en charge avec Table
+*@

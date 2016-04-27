@@ -1,0 +1,80 @@
+﻿@model IEnumerable<BoiteOutilsMVC.Domaine.Personne>
+
+@{
+    ViewBag.Title = "Vue partielle asynchrone";
+}
+
+
+<h2>Vue partielle asynchrone</h2>
+
+<div id="det">
+
+    oo
+</div>
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Prenom)
+        </th>
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Nom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Prenom)
+        </td>
+       
+        <td>
+            @* => emplacement sur lequel va s'insérer la vue partielle 
+            Remarquez comment l'id est formé
+            *@
+            <div id="@Html.Id("voirDetails" + item.Id.ToString())">
+            </div>
+            
+
+            @*=>
+            UpdateTargetId: id de l'élément sur lequel aura lieu l'insertion de la vue partielle
+            InsertionMode: indique comment aura lieu l'insertion, ici on remplace
+
+            D'autres paramètres existent, ils ne sont pas exploités ici
+
+            Pour que ce code fonctionne, il est également important de s'assurer que jquery.unobtrusive-ajax.min.js soit chargé
+            par exemple en le plaçant dans le layout. Faute de quoi la vue partielle se comportera comme une vue normale!
+
+            Le 4ème paramètre de ActionLink ajoute un id, ce qui permet éventuellement de faire en sorte que la vue partielle remplace le lien
+            lui-même plutôt que la div.
+
+            Il pourrait arriver que l'on souhaite ajouter une propriété dont le nom comporte un - (dash).
+            Un tel nom n'est pas autorisé en C#. Dans e cas on remplace - par _ (souligné), le framework fera la conversion
+            *@
+
+            @Ajax.ActionLink("Détails",
+            "Details",
+            "Message",
+            new { id = item.Id },
+            new AjaxOptions
+            {
+                HttpMethod = "GET",
+                InsertionMode = InsertionMode.Replace,
+                UpdateTargetId = "voirDetails" + item.Id.ToString()
+            },
+            new {id="link" +  item.Id.ToString()}
+            )
+         
+        </td>
+    </tr>
+}
+
+</table>
+
+

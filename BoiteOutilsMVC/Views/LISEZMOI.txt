@@ -1,0 +1,14 @@
+﻿_viewStart.cshtml déclare un layout qui s'applique par défaut à toutes les vues.
+Une vue peut toutefois choisir d'utiliser un autre layout, il suffit d'ajouter cette déclaration en début de page:
+
+@{
+    Layout = "~/Views/Shared/MONLAYOUT.cshtml";
+}
+
+On peut aussi ne pas utiliser de layout:
+
+@{
+    Layout = null;
+}
+
+Note: un layout est la réponse de Razor aux pages maîtres

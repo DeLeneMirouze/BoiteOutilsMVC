@@ -1,0 +1,41 @@
+﻿@model IEnumerable<BoiteOutilsMVC.Domaine.Personne>
+
+@{
+    ViewBag.Title = "Vue partielle synchrone";
+}
+
+<h2>Vue partielle synchrone</h2>
+
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Prenom)
+        </th>
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Nom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Prenom)
+        </td>
+       
+        <td>
+
+        @Html.Partial("_Details",item)
+         
+
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,24 @@
+﻿@model DateTime
+
+@{
+    ViewBag.Title = "Display";
+}
+
+<h2>Cache et action enfant</h2>
+
+<div>
+    Page affichée le: @Model.ToLongTimeString();
+</div>
+
+<br />
+
+<div>
+    @*
+    Les méthodes Action et RenderAction sont identique. RenderAction écrit directement dans la réponse
+    Ces méthodes sont typiquement employées pour récupérer le résultat d'une vue partielle 
+    *@
+
+    @Html.Action("CurrentTime")
+
+</div>
+

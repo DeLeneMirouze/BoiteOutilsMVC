@@ -1,0 +1,4 @@
+﻿Ici on trouve les vues contrôlées par le contrôlleur HomeControler
+Chaque vue porte le nom d'une action. Il n'y a pas d'autres règles particulières de nommage.
+
+C'est le comportement par défaut

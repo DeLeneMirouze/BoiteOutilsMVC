@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+    @* ==>  Le layout est la réponse de Razor aux pages maitres*@
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    @* ==>  Charge les bundles de type style et script respectivement
+    Voir la classe BundleConfig.cs dans App_Start
+    *@
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <header>
+        <div style="background-color: aqua">
+            <table>
+                <tbody>
+                    <tr>
+                        <td><h4>Du contrôleur à la vue</h4></td>
+                        <td><h4>De la vue au contrôleur</h4></td>
+                        <td> <h4>Message, validation</h4></td>
+                        <td><h4>Avancé</h4></td>
+                         <td><h4>Autre</h4></td>
+                    </tr>
+                </tbody>
+                <tr>
+                    <td>
+                        <nav>
+                            
+                            <ul id="menu">
+                                @* ==> Url pointant sur une action dans un contrôleur
+                    ActionLink construit l'url appropriée connaissant le contrôleur et l'action
+
+                    Dans le cas où l'on dispose de plusieurs route, on peut aussi utiliser RouteLink qui attend le nom d'une route
+
+                    Il peut arriver que l'on n'ai besoin que de l'url, pas du html autour. Dans ce cas on dispose du helper @Url
+                    *@
+
+                                <li>@Html.ActionLink("ViewBag", "Index", "Home")</li>
+                                <li>@Html.ActionLink("ViewData", "DemoViewData", "Home")</li>
+                                <li>@Html.ActionLink("Retour direct chaîne", "DemoStringReturn", "Home")</li>
+                                <li>@Html.ActionLink("Retour ContentResult", "DemoStringContentResult", "Home")</li>
+                                <li>@Html.ActionLink("String dans une View", "DemoStringInView", "Home")</li>
+                                <li>@Html.ActionLink("Vue typée", "DemoTypedView", "Home")</li>
+                                <li>@Html.ActionLink("Code retour HTML (404)", "GoTo", "Home")</li>
+                                <li>@Html.ActionLink("Utiliser un vue/modèle", "Index", "View", new { Id = 4 }, null)</li>
+                            </ul>
+                        </nav>
+                    </td>
+
+                    <td>
+                        <nav>
+                            
+                            <ul id="menuCrud">
+                                <li>@Html.ActionLink("CRUD techniques de base", "Index", "Crud")</li>
+                                <li>@Html.ActionLink("Binding de base", "Edit", "Binder", new { id = 2 }, null)</li>
+                                <li>@Html.ActionLink("Binding explicite", "EditExplicite", "Binder", new { id = 2 }, null)</li>
+                                <li>@Html.ActionLink("Binding personnalisé", "EditUser", "Binder", new { id = 2 }, null)</li>
+                            </ul>
+                        </nav>
+                    </td>
+
+                    <td>
+                        <nav>
+                           
+                            <ul>
+                                <li>@Html.ActionLink("Validation", "Create", "Message")</li>
+                                <li>@Html.ActionLink("Personnaliser messages de validation", "CreatePersonnalized", "Message")</li>
+                                <li>@Html.ActionLink("Popup", "ModalPopup", "Message")</li>
+                                <li>@Html.ActionLink("Popin", "Index", "Popin")</li>
+                            </ul>
+                        </nav>
+                    </td>
+
+                    <td>
+                        <nav>
+                            
+                            <ul>
+                                <li>@Html.ActionLink("Vue partielle synchrone", "PartialSync", "Message")</li>
+                                <li>@Html.ActionLink("Vue partielle asynchrone", "PartialASync", "Message")</li>
+                                <li>@Html.ActionLink("Cache", "Display", "Advanced")</li>
+                                <li>@Html.ActionLink("Filtres", "Index", "Filter")</li>
+                            </ul>
+                        </nav>
+                    </td>
+
+
+                    <td>
+                        <nav>
+                            <ul>
+                                <li>@Html.ActionLink("AutoPostback", "Index", "AutopostBack")</li>
+                            </ul>
+                        </nav>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <hr />
+    </header>
+
+    <div id="body">
+        @*  ==> Possibilité d'utiliser une section appelée "featured"
+        elle est déclarée comme optionnelle
+        Il appartiendra à chaque vue de la définir ou non
+        RenderSection attend une déclaration @Section de la part de la vue pour créer le html qui va entrer dans la section*@
+
+        @RenderSection("featured", required: false)
+
+        <section>
+            @* ==>  Marqueur qui indique où les vues qui utilisent ce layout effectueront leur rendu*@
+            @RenderBody()
+        </section>
+    </div>
+
+      @Scripts.Render("~/bundles/jquery")
+
+    @* => puisque l'on fait un peu d'ajax et de jqueryUI *@
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryui")
+
+    @* => dans cette section on placera les déclarations des .js nécessaires à la vue*@
+    @RenderSection("scripts", required: false)
+</body>
+</html>

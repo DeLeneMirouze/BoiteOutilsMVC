@@ -1,0 +1,42 @@
+﻿@model BoiteOutilsMVC.Domaine.Personne
+
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Personne</legend>
+
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Nom)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Nom)
+            @Html.ValidationMessageFor(model => model.Nom)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Prenom)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Prenom)
+            @Html.ValidationMessageFor(model => model.Prenom)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Informations)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Informations)
+            @Html.ValidationMessageFor(model => model.Informations)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+

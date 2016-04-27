@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "ModalPopup";
+}
+
+<script type="text/javascript">
+
+    ShowModalPopUp = function ()
+    {
+        window.showModalDialog('@Url.Action("Edit","Crud",new { id = 2 }, null)', "ModalPopup");
+    }
+
+    ShowModelessPopUp = function ()
+    {
+        window.open('@Url.Action("Edit","Crud",new { id = 2 }, null)', "ModelessPopup");
+    }
+ </script> 
+
+<h2>Popup</h2>
+
+<input type="button"  value="Ouvrir en modal" onclick="ShowModalPopUp();" />
+<input type="button"  value="Ouvrir en modeless" onclick="ShowModelessPopUp();" />
+
+

@@ -1,0 +1,85 @@
+﻿
+Tuto MVC
+---------------------
+
+L'objectif de ce projet n'est pas de fournir un projet super utile (certains formulaires existent en plusieurs versions),
+mais un outil de travail pour:
+
+* ceux qui débutent en MVC
+* ceux qui veulent voir en oeuvre certaines nouveautés de MVC 4
+* servir de bibliothèque de code pour gérer certains comportement pas forcément évident en MVC
+
+
+La particularité de ce projet est son niveau de commentaire qui est bien au dessus de ce qui est utile pour un projet normal.
+Les commentaires ajoutés sont nombreux et situés dans quasiment tous les fichiers. Ils ont pour objectif d'expliquer ce qui
+se passe. Le niveau des commentaires est 101 (débutant), ce qui explique leur quantité.
+Mais il ne s'agit toutefois pas d'un roman et ne remplaceront pas la lecture d'un bon bouquin.
+
+Commencez votre lecture par global.asax, puis le contrôleur index. N'oubliez pas non plus les nombreux fichiers LISEZMOI
+
+* ------------------------------------------------------------------------------------------------------------------ *
+
+Pour construire ce projet, les conventions de nommages ont été utilisées. C'est de très loin la meilleure façon de procéder même si le
+framework MVC et suffisament souple pour s'adapter à d'autres architectures de projet.
+Cela peut sembler de la magie, mais ça marche.
+
+- Le nom d’une classe contrôleur DOIT se terminer par Controller: HomeController
+- Les modèles de vue (ascx, aspx...) DOIVENT être placées dans le répertoire: /Views/<nom controller sans le suffixe Controller>
+- La vue par défaut d’une action doit être nommée après le nom de la méthode d’action
+- Utiliser /Views/Shared comme répertoire des vues partagées par plusieurs contrôleurs
+
+
+---------------------------------------------------------------------------------------------------------------
+
+Autre technique à avoir en tête: les assistants et le scaffolding.
+
+Que ce soit pour créer une vue ou des contrôleurs VS propose des assistants qui font à votre place le gros du travail.
+Par exemple en faisant clic droit dans un répertoire on voit apparaître un menu Ajouter/Controleur qui crée un contrôleur à cet emplacement.
+Si vous naviguez dans Views vous verrez aussi apparaître Ajouter/View.
+
+Vous pouvez aussi faire apparaître ce menu en cliquant droit depuis le code de la méthode d'action d'un contrôleur (ainsi que le menu Aller à la vue)
+
+Ces menus font appels à des templates T4 qu'il est possible de personnaliser (voir ici pour plus de détails: \Views\DemoData\LISEZMOI.txt)
+
+Ces possibilités sont puissantes et vous feront gagner beaucoup de temps.
+
+Il est possible d'aller encore plus loin avec le scaffolding.
+Ce terme se traduit par échaffaudage ou structure.
+Il s'agit de créer un template qui va construire très rapidement une trame de base d'une application que l'on pourra ensuite éditer et finir
+de personnaliser.
+
+Par exemple l'assistant de création d'un contrôleur propose plusieurs options de modèles (Template) comme:
+* Contrôleur MVC avec action et vues en lecture/écriture, qui utilise Entity Framework (MVC controller with read/edit and views using Entity Framework)
+
+Cette option va créer un contrôleur avec les méthodes d'action CRUD, le contexte EF ainsi que toutes les vues (en utilisant les templates T4 vus précédemment)
+
+C'est cela le scaffolding.
+
+
+Un tuto complet en 7 parties:
+http://blog.stevensanderson.com/2011/01/13/scaffold-your-aspnet-mvc-3-project-with-the-mvcscaffolding-package/
+
+Ces templates peuvent être créés (des templates T4 là encore) soit même ou bien installés via Nugets (rechercher le mot scaffolding pour voir apparaître de nombreux exemples).
+
+----------------------- Pas couvert par le tuto ------------------------------------------------------
+
+* Création de menu: la méthode proposée dans le layout fonctionne, rien à redire si ce n'est que les menus sont codés en dur, pas de gestion de droits...
+On a mieux en Asp.Net!!
+Un projet open source règle le problème, MvcSiteMapProvider: https://github.com/maartenba/MvcSiteMapProvider
+
+* Web Api: parce que ce n'est pas une nouveauté particulière à MVC. Mais des liens vers de très bons tutos sont données
+
+* améliorations pour les applications mobiles
+
+* démonstration des areas
+
+
+
+
+----------------------- Autres lecture -------------------------------------------------- 
+Une liste de bonnes pratiques en MVC
+http://weblogs.asp.net/rashid/archive/2009/04/01/asp-net-mvc-best-practices-part-1.aspx
+
+http://stackoverflow.com/questions/279665/how-can-i-maintain-modelstate-with-redirecttoaction
+(voir commentaire de tomas lycken)
+

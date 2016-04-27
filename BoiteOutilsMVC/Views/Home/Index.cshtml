@@ -1,0 +1,29 @@
+﻿@* ==> Syntaxe Razor pour injecter du code C#*@
+
+@{
+    ViewBag.Title = "Démo ViewBag";
+}
+
+
+@* ==> Définition du contenu de la section appelée featured définie dans le layout. 
+Cette déclaration sera utilisée par @RenderSection dans le layout *@
+@section featured 
+    {
+    <section class="featured">
+            <hgroup class="title">
+                <h1>
+                    @* ==> accès à la propriété ViewBag de la vue *@
+                    @ViewBag.Message
+                </h1>
+
+                <h1>
+                    @* ==> on peut aussi faire ceci *@
+                    Autre possibilité: @ViewData["Message"]
+                </h1>
+            </hgroup>
+    </section>
+}
+
+
+
+

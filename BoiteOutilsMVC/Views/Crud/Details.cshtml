@@ -1,0 +1,75 @@
+﻿@*
+=> lisez  auparavant les commentaires trouvés sur DemoTypedView.cshtml
+*@
+
+@model BoiteOutilsMVC.Domaine.Personne
+
+@{
+    ViewBag.Title = "Détails";
+}
+
+<h2>Détails</h2>
+
+<fieldset>
+    <legend>Personne</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Nom)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Nom)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Prenom)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Prenom)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DateNaissance)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DateNaissance)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SuperHeros)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SuperHeros)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Email)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Email)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Blog)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Blog)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Telephone)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Telephone)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PointDeVie)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PointDeVie)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Editer", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Revenir à la liste", "Index")
+</p>

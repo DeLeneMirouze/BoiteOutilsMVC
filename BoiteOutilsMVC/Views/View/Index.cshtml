@@ -1,0 +1,55 @@
+﻿@model BoiteOutilsMVC.Domaine.ViewModels.PersonneViewModel
+@using BoiteOutilsMVC.Models
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+ <fieldset>
+        <legend>Personne</legend>
+
+            <div class="editor-label">
+            @Html.LabelFor(model => model.PersonneAEditer.Civilite)
+        </div>
+        <div class="editor-field">
+            @* =>
+            Exemple de liste déroulante alimentée par une énumération
+            Pour simplifier le code il a été écrit une méthode d'extension dont le code se trouve dans HtmlDropDownExtensions
+            *@
+      
+            @Html.EnumDropDownListFor(model=>model.PersonneAEditer.Civilite)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PersonneAEditer.Nom)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PersonneAEditer.Nom)
+            @Html.ValidationMessageFor(model => model.PersonneAEditer.Nom)
+        </div>
+
+       <div class="editor-label">
+            @Html.LabelFor(model => model.PersonneAEditer.GenreMusicalId)
+        </div>
+        <div class="editor-field">
+            @* =>
+            le premier paramètre est la valeur à rechercher dans la liste
+            le deuxième est le contenu de la ddl (une instance de SelectList)
+            Dans le cas d'un formulaire Create on pourrait aussi ajouter un texte comme "Veillez faire une sélection"
+            *@
+            @Html.DropDownListFor(model=>model.PersonneAEditer.GenreMusicalId, Model.GenresMusicaux)
+        </div>
+
+    </fieldset>
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,41 @@
+﻿@model BoiteOutilsMVC.Domaine.Personne
+
+@{
+    ViewBag.Title = "Editer";
+}
+
+<h2>Editer</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Personne</legend>
+
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Nom)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Nom)
+            @Html.ValidationMessageFor(model => model.Nom)
+        </div>
+
+       <div class="editor-label">
+            @Html.LabelFor(model => model.PointDeVie)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PointDeVie)
+        </div>
+        
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+
+
+

@@ -1,0 +1,23 @@
+﻿@model BoiteOutilsMVC.Domaine.ViewModels.MessageListViewModel
+
+@{
+    ViewBag.Title = "Auto postback";
+}
+
+
+<h2>Auto postback</h2>
+
+@*=> un form est indispensable pour lancer le submit plus loin*@
+
+@using (Html.BeginForm("List", "AutopostBack"))
+{
+    @Html.DropDownListFor(
+    mod => mod.SelectedIdCountry, @* où doit s'ancrer la sélection *@
+    Model.CountriesList,  @* ce que l'on doit afficher *@
+    "Faites une sélection",
+    new { onchange = "this.form.submit();" }
+    )
+
+    <h3>@Model.Message</h3>
+}
+
