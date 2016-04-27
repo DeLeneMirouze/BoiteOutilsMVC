@@ -4,7 +4,7 @@ Tuto MVC
 
 L'objectif de ce projet n'est pas de fournir un projet super utile (certains formulaires existent en plusieurs versions),
 mais un outil de travail pour:
-
+ 
 * ceux qui débutent en MVC
 * ceux qui veulent voir en oeuvre certaines nouveautés de MVC 4
 * servir de bibliothèque de code pour gérer certains comportement pas forcément évident en MVC
